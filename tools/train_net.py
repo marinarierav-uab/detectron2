@@ -131,7 +131,12 @@ def register_dataset():
     register_coco_instances("CVC-VideoClinicDB_val", {},
                             "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/annotations/renamed-valid.json",
                             "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/images/train")
-
+    register_coco_instances("CVC-VideoClinicDB_test", {},
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/annotations/test.json",
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/images/test")
+    register_coco_instances("sample", {},
+                            "/home/marina/GitHub/data/samples/annotations/test.json",
+                            "/home/marina/GitHub/data/samples/images/test")
 def main(args):
     register_dataset()
     cfg = setup(args)

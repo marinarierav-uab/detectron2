@@ -9,11 +9,11 @@ MODEL:
     NUM_CLASSES: 2  # AD, NA
 DATASETS:
   TRAIN : ("CVC-VideoClinicDB_train",)
-  TEST : ("CVC-VideoClinicDB_val",)
+  TEST : ("CVC-VideoClinicDB_test",)
 DATALOADER:
   NUM_WORKERS : 2
 SOLVER:
   IMS_PER_BATCH: 2
   BASE_LR: 0.0025
-  MAX_ITER: 300
+  MAX_ITER: 50000
 OUTPUT_DIR: "./work_dirs/exp50/"
