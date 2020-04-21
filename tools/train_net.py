@@ -37,6 +37,7 @@ from detectron2.evaluation import (
     verify_results,
 )
 from detectron2.modeling import GeneralizedRCNNWithTTA
+from detectron2.data.datasets import register_coco_instances
 
 
 class Trainer(DefaultTrainer):
@@ -123,8 +124,18 @@ def setup(args):
     return cfg
 
 
+def register_dataset():
+    register_coco_instances("CVC-VideoClinicDB_train", {},
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/annotations/renamed-train.json",
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/images/train")
+    register_coco_instances("CVC-VideoClinicDB_val", {},
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/annotations/renamed-valid.json",
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/images/train")
+
 def main(args):
+    register_dataset()
     cfg = setup(args)
+    os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
 
     if args.eval_only:
         model = Trainer.build_model(cfg)
