@@ -1,0 +1,18 @@
+_BASE_: "Base-RCNN-FPN.yaml"
+MODEL:
+  WEIGHTS: "models/mask_rcnn_R_101_FPN_3x.pkl"
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 101
+  ROI_HEADS:
+    NUM_CLASSES: 2  # AD, NA
+DATASETS:
+  TRAIN : ("CVC-VideoClinicDB_train",)
+  TEST : ("CVC-VideoClinicDB_test",)
+DATALOADER:
+  NUM_WORKERS : 2
+SOLVER:
+  IMS_PER_BATCH: 2
+  BASE_LR: 0.0025
+  MAX_ITER: 100000
+OUTPUT_DIR: "./work_dirs/exp53/"

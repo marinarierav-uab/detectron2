@@ -402,16 +402,15 @@ if __name__ == '__main__':
     ap.add_argument("--list", action='store_true', help="threshold series")
 
     params = ap.parse_args()
-    team = params.team.split('.bbox.json')[0].split('json/')[-1]
 
     folder_detection = os.path.join(params.res, "Detection")
-    folder_detection = os.path.join(folder_detection, team)
+    folder_detection = os.path.join(folder_detection, params.team)
     folder_localization = os.path.join(params.res, "Localization")
-    folder_localization = os.path.join(folder_localization, team)
+    folder_localization = os.path.join(folder_localization, params.team)
     output_folder = params.out
 
     if output_folder is None:
         output_folder = os.path.join(params.res, "results_giana")
     folder_gt = "/home/marina/Downloads/DATASETS/cvcvideoclinicdbtest/masks/"
 
-    do_giana_eval(folder_detection, folder_localization, folder_gt, output_folder, team, params.thr, params.list)
+    do_giana_eval(folder_detection, folder_localization, folder_gt, output_folder, params.team, params.thr, params.list)
