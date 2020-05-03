@@ -1,0 +1,21 @@
+_BASE_: "Base-RCNN-FPN.yaml"
+MODEL:
+  WEIGHTS: "models/mask_rcnn_R_101_FPN_3x.pkl"
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 101
+  ROI_HEADS:
+    NUM_CLASSES: 2  # AD, NA
+DATASETS:
+  TRAIN : ("CVC-VideoClinicDB_train",)
+  TEST : ("CVC-VideoClinicDB_test",)
+DATALOADER:
+  NUM_WORKERS : 2
+SOLVER:
+  IMS_PER_BATCH: 2
+  BASE_LR: 0.0025
+  WEIGHT_DECAY: 0.0001
+  LR_SCHEDULER_NAME: "WarmupCosineLR"
+  MAX_ITER: 26775
+  STEPS: (0, 13393, 21420)
+OUTPUT_DIR: "./work_dirs/exp55/"

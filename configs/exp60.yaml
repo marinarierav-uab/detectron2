@@ -1,0 +1,24 @@
+_BASE_: "Base-RCNN-FPN.yaml"
+MODEL:
+  MASK_ON: False
+  WEIGHTS: "detectron2://ImageNetPretrained/FAIR/X-101-32x8d.pkl"
+  PIXEL_STD: [57.375, 57.120, 58.395]
+  RESNETS:
+    STRIDE_IN_1X1: False  # this is a C2 model
+    NUM_GROUPS: 32
+    WIDTH_PER_GROUP: 8
+    DEPTH: 101
+  ROI_HEADS:
+    NUM_CLASSES: 2
+DATASETS:
+  TRAIN : ("CVC-VideoClinicDB_train",)
+  TEST : ("CVC-VideoClinicDB_test",)
+DATALOADER:
+  NUM_WORKERS : 2
+SOLVER:
+  IMS_PER_BATCH: 2
+  BASE_LR: 0.0025
+  WEIGHT_DECAY: 0.0001
+  LR_SCHEDULER_NAME: "WarmupCosineLR"
+  MAX_ITER: 26775
+OUTPUT_DIR: "./work_dirs/exp60/"
