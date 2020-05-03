@@ -11,6 +11,7 @@ import pycocotools.mask as mask_util
 import torch
 from fvcore.common.file_io import PathManager
 from PIL import Image, ImageOps
+import cv2
 
 from detectron2.structures import (
     BitMasks,
@@ -67,6 +68,8 @@ def read_image(file_name, format=None):
         # PIL squeezes out the channel dimension for "L", so make it HWC
         if format == "L":
             image = np.expand_dims(image, -1)
+        if format == "pre-to-hsv":
+            image = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
         return image
 
 
