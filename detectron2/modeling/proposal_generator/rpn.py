@@ -96,6 +96,7 @@ class RPN(nn.Module):
 
         # fmt: off
         self.min_box_side_len        = cfg.MODEL.PROPOSAL_GENERATOR.MIN_SIZE
+        self.max_box_side_len        = cfg.MODEL.PROPOSAL_GENERATOR.MAX_SIZE
         self.in_features             = cfg.MODEL.RPN.IN_FEATURES
         self.nms_thresh              = cfg.MODEL.RPN.NMS_THRESH
         self.batch_size_per_image    = cfg.MODEL.RPN.BATCH_SIZE_PER_IMAGE
@@ -179,6 +180,7 @@ class RPN(nn.Module):
                 self.pre_nms_topk[self.training],
                 self.post_nms_topk[self.training],
                 self.min_box_side_len,
+                self.max_box_side_len,
                 self.training,
             )
 

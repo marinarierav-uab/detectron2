@@ -57,6 +57,7 @@ def find_top_rpn_proposals(
     pre_nms_topk,
     post_nms_topk,
     min_box_side_len,
+    max_box_side_len,
     training,
 ):
     """
@@ -141,7 +142,7 @@ def find_top_rpn_proposals(
         boxes.clip(image_size)
 
         # filter empty boxes
-        keep = boxes.nonempty(threshold=min_box_side_len)
+        keep = boxes.nonempty(threshold=min_box_side_len, upper_threshold=max_box_side_len)
         if keep.sum().item() != len(boxes):
             boxes, scores_per_img, lvl = boxes[keep], scores_per_img[keep], lvl[keep]
 
