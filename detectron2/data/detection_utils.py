@@ -34,7 +34,7 @@ class SizeMismatchError(ValueError):
     """
 
 
-def read_image(file_name, format=None):
+def read_image(file_name, format=None, hsv=False):
     """
     Read an image into the given format.
     Will apply rotation and flipping if the image has such exif information.
@@ -68,8 +68,9 @@ def read_image(file_name, format=None):
         # PIL squeezes out the channel dimension for "L", so make it HWC
         if format == "L":
             image = np.expand_dims(image, -1)
-        if format == "pre-to-hsv":
+        if hsv:
             image = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
+        #cv2.imwrite("/home/marina/GitHub/detectron2/output/"+file_name.split('/')[-1], image)
         return image
 
 

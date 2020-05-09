@@ -5,10 +5,15 @@ MODEL:
   RESNETS:
     DEPTH: 101
   ROI_HEADS:
-    NUM_CLASSES: 2  # AD, NA
+    NAME: CascadeROIHeads
+    NUM_CLASSES: 1  # AD, NA
+  ROI_BOX_HEAD:
+    CLS_AGNOSTIC_BBOX_REG: True
+  RPN:
+    POST_NMS_TOPK_TRAIN: 2000
 DATASETS:
-  TRAIN : ("CVC-VideoClinicDB_train",)
-  TEST : ("CVC-VideoClinicDB_test",)
+  TRAIN : ("cvc-612", "cvc-300",)
+  TEST : ("CVC-VideoClinicDB_test_polyp",)
 DATALOADER:
   NUM_WORKERS : 2
 SOLVER:
@@ -16,5 +21,5 @@ SOLVER:
   BASE_LR: 0.0025
   WEIGHT_DECAY: 0.0001
   LR_SCHEDULER_NAME: "WarmupCosineLR"
-  MAX_ITER: 26775
-OUTPUT_DIR: "./work_dirs/exp58/"
+  MAX_ITER: 4730
+OUTPUT_DIR: "./work_dirs/exp61/"

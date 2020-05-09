@@ -125,6 +125,7 @@ def setup(args):
 
 
 def register_dataset():
+    # HISTOLOGY
     register_coco_instances("CVC-VideoClinicDB_train", {},
                             "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/annotations/renamed-train.json",
                             "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/images/train")
@@ -133,6 +134,30 @@ def register_dataset():
                             "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/images/train")
     register_coco_instances("CVC-VideoClinicDB_test", {},
                             "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/annotations/test.json",
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/images/test")
+    register_coco_instances("CVC-VideoClinicDB_test_vid01", {},
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/annotations/test-vid01.json",
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/images/test")
+
+    # NO HISTOLOGY
+    register_coco_instances("CVC-VideoClinicDB_train_val_polyp", {},
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/annotations/train-polyp.json",
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/images/train")
+    register_coco_instances("cvc-300", {},
+                            "/home/marina/GitHub/data/cvc-colondb/annotations/300-polyp.json",
+                            "/home/marina/GitHub/data/cvc-colondb/images/300")
+    register_coco_instances("cvc-612", {},
+                            "/home/marina/GitHub/data/cvc-colondb/annotations/612-polyp.json",
+                            "/home/marina/GitHub/data/cvc-colondb/images/612")
+    register_coco_instances("HDClassif", {},
+                            "/home/marina/GitHub/data/HDClassif/annotations/HDClassif-polyp.json",
+                            "/home/marina/GitHub/data/HDClassif/images")
+
+    register_coco_instances("CVC-VideoClinicDB_test_polyp", {},
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/annotations/test-polyp.json",
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/images/test")
+    register_coco_instances("CVC-VideoClinicDB_test_vid01_polyp", {},
+                            "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/annotations/test-vid01-polyp.json",
                             "/home/marina/GitHub/data/CVC-VideoClinicDBtrain_valid/images/test")
     register_coco_instances("sample", {},
                             "/home/marina/GitHub/data/samples/annotations/test.json",
