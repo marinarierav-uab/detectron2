@@ -8,6 +8,7 @@ from PIL import Image
 
 from . import detection_utils as utils
 from . import transforms as T
+import cv2
 
 """
 This file contains the default mapping that's applied to "dataset dicts".
@@ -147,4 +148,7 @@ class DatasetMapper:
             sem_seg_gt = transforms.apply_segmentation(sem_seg_gt)
             sem_seg_gt = torch.as_tensor(sem_seg_gt.astype("long"))
             dataset_dict["sem_seg"] = sem_seg_gt
+
+        #cv2.imwrite("/home/marina/GitHub/detectron2/output/"+dataset_dict["file_name"].split('/')[-1], image)
+
         return dataset_dict

@@ -12,16 +12,19 @@ MODEL:
   RPN:
     POST_NMS_TOPK_TRAIN: 2000
 DATASETS:
-  TRAIN : ("CVC-VideoClinicDB_train_val_polyp", "cvc-612", "cvc-300",)
+  TRAIN : ("CVC-VideoClinicDB_train_val_polyp", "cvc-612", "cvc-300", "HDClassif",)
   TEST : ("CVC-VideoClinicDB_test",)
 INPUT:
-  HSV: True
+  # Sample size of smallest side by choice or random selection from range give by
+  # INPUT.MIN_SIZE_TRAIN
+  MIN_SIZE_TRAIN_SAMPLING: "range"
+  MIN_SIZE_TRAIN: (288,316)
 DATALOADER:
-  NUM_WORKERS : 0
+  NUM_WORKERS : 2
 SOLVER:
   IMS_PER_BATCH: 2
   BASE_LR: 0.0025
   WEIGHT_DECAY: 0.0001
   LR_SCHEDULER_NAME: "WarmupCosineLR"
   MAX_ITER: 26775
-OUTPUT_DIR: "./work_dirs/exp69/"
+OUTPUT_DIR: "./work_dirs/exp72/"
