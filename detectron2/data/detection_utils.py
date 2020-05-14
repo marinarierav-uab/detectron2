@@ -448,13 +448,13 @@ def build_transform_gen(cfg, is_train):
     Returns:
         list[TransformGen]
     """
-    if is_train:
-        angle = cfg.INPUT.ROTATION_ANGLE
+    angle = cfg.INPUT.ROTATION_ANGLE
 
     if is_train:
-        min_size = cfg.INPUT.MIN_SIZE_TRAIN
-        max_size = cfg.INPUT.MAX_SIZE_TRAIN
-        sample_style = cfg.INPUT.MIN_SIZE_TRAIN_SAMPLING
+        min_size        = cfg.INPUT.MIN_SIZE_TRAIN
+        max_size        = cfg.INPUT.MAX_SIZE_TRAIN
+        sample_style    = cfg.INPUT.MIN_SIZE_TRAIN_SAMPLING
+        flips           = cfg.INPUT.FLIPS
     else:
         min_size = cfg.INPUT.MIN_SIZE_TEST
         max_size = cfg.INPUT.MAX_SIZE_TEST
@@ -467,8 +467,10 @@ def build_transform_gen(cfg, is_train):
     logger = logging.getLogger(__name__)
     tfm_gens = []
     tfm_gens.append(T.ResizeShortestEdge(min_size, max_size, sample_style))
-    tfm_gens.append(T.RandomRotation(angle))
     if is_train:
-        tfm_gens.append(T.RandomFlip())
+        if angle != 0:
+            tfm_gens.append(T.RandomRotation(angle))
+        if flips:
+            tfm_gens.append(T.RandomFlip())
         logger.info("TransformGens used in training: " + str(tfm_gens))
     return tfm_gens

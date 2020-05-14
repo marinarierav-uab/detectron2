@@ -60,6 +60,7 @@ _C.INPUT.MIN_SIZE_TEST = 800
 _C.INPUT.MAX_SIZE_TEST = 1333
 
 _C.INPUT.ROTATION_ANGLE = 0
+_C.INPUT.FLIPS = True
 
 
 # `True` if cropping is used for data augmentation during training

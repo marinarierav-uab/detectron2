@@ -14,12 +14,14 @@ MODEL:
 DATASETS:
   TRAIN : ("CVC-VideoClinicDB_train_val_polyp", "cvc-612", "cvc-300", "HDClassif",)
   TEST : ("CVC-VideoClinicDB_test",)
+INPUT:
+  FLIPS: False
 DATALOADER:
-  NUM_WORKERS : 0
+  NUM_WORKERS: 0
 SOLVER:
   IMS_PER_BATCH: 2
   BASE_LR: 0.0025
   WEIGHT_DECAY: 0.0001
   LR_SCHEDULER_NAME: "WarmupCosineLR"
   MAX_ITER: 26775
-OUTPUT_DIR: "./work_dirs/exp67_redo/"
+OUTPUT_DIR: "./work_dirs/exp76/"
