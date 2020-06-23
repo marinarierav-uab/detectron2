@@ -14,7 +14,7 @@ from detectron2.data import DatasetCatalog, MetadataCatalog
 from detectron2.structures import Boxes, BoxMode, Instances
 from detectron2.utils.logger import setup_logger
 from detectron2.utils.visualizer import Visualizer
-
+from tools.train_net import register_dataset
 
 def create_instances(predictions, image_size):
     ret = Instances(image_size)
@@ -49,6 +49,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     logger = setup_logger()
+
+    register_dataset()
 
     with PathManager.open(args.input, "r") as f:
         predictions = json.load(f)

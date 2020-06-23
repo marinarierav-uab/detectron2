@@ -21,5 +21,5 @@ SOLVER:
   BASE_LR: 0.0025
   WEIGHT_DECAY: 0.0001
   LR_SCHEDULER_NAME: "WarmupCosineLR"
-  MAX_ITER: 26775
-OUTPUT_DIR: "./work_dirs/exp67_redo/"
+  MAX_ITER: 53550 #26775
+OUTPUT_DIR: "./work_dirs/exp67_10ep/"

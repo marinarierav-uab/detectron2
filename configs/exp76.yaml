@@ -13,7 +13,7 @@ MODEL:
     POST_NMS_TOPK_TRAIN: 2000
 DATASETS:
   TRAIN : ("CVC-VideoClinicDB_train_val_polyp", "cvc-612", "cvc-300", "HDClassif",)
-  TEST : ("CVC-VideoClinicDB_test",)
+  TEST : ("CVC-VideoClinicDB_test_polyp",)
 INPUT:
   FLIPS: False
 DATALOADER:
